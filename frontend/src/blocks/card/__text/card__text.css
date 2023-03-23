@@ -1,0 +1,8 @@
+.card__text {
+  display: flex;
+  height: calc(100% - 282px);
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 21px;
+  padding-right: 20px;
+}

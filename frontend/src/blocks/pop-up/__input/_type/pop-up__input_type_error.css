@@ -1,0 +1,11 @@
+.pop-up__input_type_error {
+  border-bottom: solid #FF0000 1px;
+}
+
+.pop-up__field:first-of-type > .pop-up__input_type_error {
+  margin-bottom: 0;
+}
+
+.pop-up__field:last-of-type > .pop-up__input_type_error {
+  margin-bottom: 0;
+}

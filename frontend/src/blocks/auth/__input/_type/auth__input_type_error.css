@@ -1,0 +1,11 @@
+.auth__input_type_error {
+  border-bottom: solid #FF0000 1px;
+}
+
+.auth__field:first-of-type > .auth__input_type_error {
+  margin-bottom: 0;
+}
+
+.auth__field:last-of-type > .auth__input_type_error {
+  margin-bottom: 0;
+}

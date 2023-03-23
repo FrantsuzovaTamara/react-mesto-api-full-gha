@@ -1,0 +1,23 @@
+.auth__input-error {
+  font-style: normal;
+  box-sizing: border-box;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FF0000;
+  display: none;
+}
+
+.auth__field:first-of-type > .auth__input-error {
+  min-height: 36px;
+}
+
+.auth__field:last-of-type > .auth__input-error {
+  min-height: 217px
+}
+
+@media screen and (max-width: 520px) {
+  .auth__field:last-of-type > .auth__input-error {
+    min-height: 174px;
+  }
+}

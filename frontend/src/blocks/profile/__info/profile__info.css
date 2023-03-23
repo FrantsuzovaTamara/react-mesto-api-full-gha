@@ -1,0 +1,11 @@
+.profile__info {
+  display: flex;
+  padding-left: 30px;
+}
+
+@media screen and (max-width: 1100px) {
+  .profile__info {
+    padding: 26px 0 30px;
+    transform: translateX(11px);
+  }
+}

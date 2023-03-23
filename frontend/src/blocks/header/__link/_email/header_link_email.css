@@ -1,0 +1,10 @@
+.header__link_email {
+  font-weight: 500;
+  margin: 0;
+}
+
+@media screen and (max-width: 680px) {
+  .header__link_email {
+    margin-bottom: 18px;
+  }
+}

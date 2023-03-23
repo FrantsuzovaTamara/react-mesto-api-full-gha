@@ -1,0 +1,23 @@
+.pop-up__input-error {
+  font-style: normal;
+  box-sizing: border-box;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FF0000;
+  display: none;
+}
+
+.pop-up__field:first-of-type > .pop-up__input-error {
+  min-height: 35px;
+}
+
+.pop-up__field:last-of-type > .pop-up__input-error {
+  min-height: 48px;
+}
+
+@media screen and (max-width: 700px) {
+  .pop-up__field:last-of-type > .pop-up__input-error {
+    min-height: 38px;
+  }
+}

@@ -1,0 +1,13 @@
+.header__entrance {
+  display: flex;
+  flex-direction: row;
+  min-width: 220px;
+  margin-top: 10px;
+  justify-content: right;
+}
+
+@media screen and (max-width: 680px) {
+  .header__entrance {
+    display: none;
+  }
+}

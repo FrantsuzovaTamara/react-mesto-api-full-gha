@@ -1,0 +1,33 @@
+.auth__input {
+  min-height: 27px;
+  min-width: 358px;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  padding: 0 0 10px;
+  background: none;
+  border-bottom: 2px solid #CCCCCC;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color:#CCCCCC;
+  outline: none;
+}
+
+.auth__field:first-of-type > .auth__input {
+  margin-bottom: 35px;
+}
+
+.auth__field:last-of-type > .auth__input {
+  margin-bottom: 216px;
+}
+
+@media screen and (max-width: 520px) {
+  .auth__input {
+    min-width: 260px;
+  }
+  .auth__field:last-of-type > .auth__input {
+    margin-bottom: 173px;
+  }
+}

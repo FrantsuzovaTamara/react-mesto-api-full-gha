@@ -1,0 +1,12 @@
+.header__link_exit {
+  color: #A9A9A9;
+  margin-left: 24px;
+  background: none;
+  border: none;
+}
+
+@media screen and (max-width: 680px) {
+  .header__link_exit {
+    margin-left: 0;
+  }
+}

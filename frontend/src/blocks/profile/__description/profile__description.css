@@ -1,0 +1,11 @@
+.profile__description {
+  display: flex;
+  flex-direction: column;
+  padding-right: 18px;
+}
+
+@media screen and (max-width: 1100px) {
+  .profile__description {
+    padding-right: 13px;
+  }
+}
