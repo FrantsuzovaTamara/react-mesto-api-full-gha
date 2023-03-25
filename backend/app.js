@@ -9,7 +9,7 @@ const router = require('./index');
 
 require('dotenv').config();
 
-const { PORT = 3000, BASE_PATH } = process.env;
+const { PORT = 3000 } = process.env;
 const app = express();
 
 app.use(helmet());
@@ -28,5 +28,5 @@ app.use(error);
 
 app.listen(PORT, () => {
   console.log('Ссылка на сервер');
-  console.log(BASE_PATH);
+  console.log(PORT);
 });

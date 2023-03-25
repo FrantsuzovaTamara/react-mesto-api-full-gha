@@ -33,6 +33,7 @@ module.exports.createUser = (req, res, next) => {
         about: user.about,
         avatar: user.avatar,
         email: user.email,
+        _id: user._id,
       });
     })
     .catch((err) => {
@@ -77,6 +78,7 @@ module.exports.getUser = (req, res, next) => {
         about: user.about,
         avatar: user.avatar,
         email: user.email,
+        _id: user._id,
       });
     })
     .catch((err) => {

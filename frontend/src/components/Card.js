@@ -3,7 +3,7 @@ import { CurrentUserContext } from '../context/CurrentUserContext.js';
 
 function Card({ onCardClick, card, onCardLike, onCardDelete }) {
   const userData= useContext(CurrentUserContext);
-  const isLiked = card.likes.some(i => i._id === userData._id);
+  const isLiked = card.likes.some(i => i === userData._id);
   const cardLikeButtonClassName = ( 
     `card__like-button ${isLiked && 'card__like-button_active'}` 
   );
@@ -22,7 +22,7 @@ function Card({ onCardClick, card, onCardLike, onCardDelete }) {
 
   return (
     <li className="card">
-      {(card.owner._id === userData._id) && <button
+      {(card.owner === userData._id) && <button
         type="button"
         className="card__delete-button"
         aria-label="Удалить"

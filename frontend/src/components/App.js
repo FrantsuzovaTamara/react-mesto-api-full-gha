@@ -55,7 +55,7 @@ function App() {
       Promise.all([api.getUserInfo(), api.getCards()])
         .then(([userData, cards]) => {
           setCurrentUser(userData);
-          setCards(cards);
+          setCards(cards.cards.reverse());
         })
         .catch((err) => {
           console.log(err);
@@ -100,12 +100,11 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
-        setCards((state) =>
-          state.map((c) => (c._id === card._id ? newCard : c))
+        setCards(cards.map((c) => (c._id === card._id ? newCard.card : c))
         );
       })
       .catch((err) => {
@@ -130,7 +129,7 @@ function App() {
     api
       .editProfileInfo(userData)
       .then((data) => {
-        setCurrentUser(data);
+        setCurrentUser(data.user);
         closeAllPopUps();
       })
       .catch((err) => {
@@ -146,7 +145,7 @@ function App() {
     api
       .editAvatar(avatar)
       .then((data) => {
-        setCurrentUser(data);
+        setCurrentUser(data.user);
         closeAllPopUps();
       })
       .catch((err) => {
@@ -162,7 +161,7 @@ function App() {
     api
       .addCardInApi(place)
       .then((newCard) => {
-        setCards([newCard, ...cards]);
+        setCards([newCard.user, ...cards]);
         closeAllPopUps();
       })
       .catch((err) => {
@@ -219,14 +218,12 @@ function App() {
 
   function handleTokenCheck() {
     const jwt = JSON.parse(localStorage.getItem("jwt"));
-    console.log(jwt);
     if (jwt) {
       Auth.checkToken(jwt)
       .then((res) => {
         if (res) {
-          console.log(res)
           setUserData({
-            email: res.data.email,
+            email: res.email,
           });
           setLoggedIn(true);
           navigate("/react-mesto-auth/my-profile", { replace: true });

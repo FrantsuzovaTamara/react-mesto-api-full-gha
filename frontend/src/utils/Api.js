@@ -8,23 +8,25 @@ class Api extends React.Component {
   }
 
   _checkResponse(res) {
-    if (res.ok) {
-      return res.json();
-    } else {
-      return Promise.reject(`Ошибка: ${res.status}`);
-    }
+    return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
   }
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
-      method: 'GET'
+      method: 'GET',
+      headers: {
+        authorization: `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`
+      }
     })
     .then(this._checkResponse);
   }
 
   getCards() {
     return fetch(`${this._baseUrl}/cards`, {
-      method: 'GET'
+      method: 'GET',
+      headers: {
+        authorization: `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`
+      }
     })
     .then(this._checkResponse);
   }
@@ -33,6 +35,7 @@ class Api extends React.Component {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: {
+        authorization: `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`,
         'Content-Type': this._contentType
       },
       body: JSON.stringify({
@@ -47,6 +50,7 @@ class Api extends React.Component {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
+        authorization: `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`,
         'Content-Type': this._contentType
       },
       body: JSON.stringify({
@@ -60,6 +64,7 @@ class Api extends React.Component {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
       headers: {
+        authorization: `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`,
         'Content-Type': this._contentType
       },
       body: JSON.stringify({
@@ -72,7 +77,11 @@ class Api extends React.Component {
 
   deleteCardInApi(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        authorization: `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`,
+        'Content-Type': this._contentType,
+      }
     })
     .then(this._checkResponse);
   }
@@ -80,12 +89,18 @@ class Api extends React.Component {
   changeLikeCardStatus(cardId, isLiked) {
     if (isLiked) {
       return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-        method: 'PUT'
+        method: 'PUT',
+        headers: {
+          authorization: `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`
+        }
       })
       .then(this._checkResponse);
     } else {
       return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+          authorization: `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`
+        }
       })
       .then(this._checkResponse);
     }
@@ -95,7 +110,7 @@ class Api extends React.Component {
 const api = new Api({
   baseUrl: "http://localhost:3000",
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   }
 });
 
