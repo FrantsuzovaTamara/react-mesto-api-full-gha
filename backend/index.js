@@ -6,7 +6,7 @@ const auth = require('./middlewares/auth');
 const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-router(requestLogger);
+router.use(requestLogger);
 router.post(
   '/signup',
   celebrate({

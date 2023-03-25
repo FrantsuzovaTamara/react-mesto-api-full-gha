@@ -219,10 +219,12 @@ function App() {
 
   function handleTokenCheck() {
     const jwt = JSON.parse(localStorage.getItem("jwt"));
+    console.log(jwt);
     if (jwt) {
       Auth.checkToken(jwt)
       .then((res) => {
         if (res) {
+          console.log(res)
           setUserData({
             email: res.data.email,
           });
