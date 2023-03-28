@@ -8,8 +8,8 @@
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 51.250.97.28
 
-Frontend https://...
+Frontend http://mesto.by.frantsuzova.t.p.nomoredomains.work
 
-Backend https://...
+Backend http://api.mesto.by.frantsuzova.nomoredomains.work
