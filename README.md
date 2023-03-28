@@ -10,6 +10,6 @@
 
 IP-адрес 51.250.97.28
 
-Frontend http://mesto.by.frantsuzova.t.p.nomoredomains.work
+Frontend https://mesto.by.frantsuzova.t.p.nomoredomains.work
 
-Backend http://api.mesto.by.frantsuzova.nomoredomains.work
+Backend https://api.mesto.by.frantsuzova.nomoredomains.work
