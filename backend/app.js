@@ -13,7 +13,7 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 app.use(helmet());
-app.use(cors({ origin: 'http://localhost:3001' }));
+app.use(cors({ origin: 'https://mesto.by.frantsuzova.t.p.nomoredomains.work' }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
