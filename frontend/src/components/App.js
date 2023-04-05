@@ -181,7 +181,7 @@ function App() {
           email: email,
           password: password,
         });
-        navigate("/react-mesto-auth/my-profile");
+        navigate("/my-profile");
       })
       .catch((err) => {
         console.log(err);
@@ -203,7 +203,7 @@ function App() {
           name: "fail",
           title: "Вы успешно зарегистрировались!",
         });
-        navigate("/react-mesto-auth/sign-in");
+        navigate("/sign-in");
       })
       .catch((err) => {
         console.log(err);
@@ -226,7 +226,7 @@ function App() {
             email: res.email,
           });
           setLoggedIn(true);
-          navigate("/react-mesto-auth/my-profile", { replace: true });
+          navigate("/my-profile", { replace: true });
         }
       })
       .catch((err) => {
@@ -242,7 +242,7 @@ function App() {
       password: "",
     });
     setLoggedIn(false);
-    navigate("/react-mesto-auth/sign-in", { replace: true });
+    navigate("/sign-in", { replace: true });
   }
 
   return (
@@ -252,25 +252,25 @@ function App() {
 
         <Routes>
           <Route
-            path="/react-mesto-auth/"
+            path="/"
             element={
               loggedIn ? (
-                <Navigate to="/react-mesto-auth/my-profile" replace />
+                <Navigate to="/my-profile" replace />
               ) : (
-                <Navigate to="/react-mesto-auth/sign-in" replace />
+                <Navigate to="/sign-in" replace />
               )
             }
           />
           <Route
-            path="/react-mesto-auth/sign-in"
+            path="/sign-in"
             element={<Login handleLogin={handleLogin} />}
           />
           <Route
-            path="/react-mesto-auth/sign-up"
+            path="/sign-up"
             element={<Register handleRegister={handleRegister} />}
           />
           <Route
-            path="/react-mesto-auth/my-profile"
+            path="/my-profile"
             element={
               <ProtectedRoute
                 component={Main}

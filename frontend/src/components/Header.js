@@ -14,7 +14,7 @@ function Header({ loggedIn, email, signOut }) {
         {!loggedIn ? (
           <>
             <NavLink
-              to="/react-mesto-auth/sign-up"
+              to="/sign-up"
               className={({ isActive }) =>
                 `header__link ${isActive ? "header__link_inactive" : ""}`
               }
@@ -22,7 +22,7 @@ function Header({ loggedIn, email, signOut }) {
               Регистрация
             </NavLink>
             <NavLink
-              to="/react-mesto-auth/sign-in"
+              to="/sign-in"
               className={({ isActive }) =>
                 `header__link ${isActive ? "header__link_inactive" : ""}`
               }
@@ -50,7 +50,7 @@ function Header({ loggedIn, email, signOut }) {
           {!loggedIn ? (
             <>
               <NavLink
-                to="/react-mesto-auth/sign-up"
+                to="/sign-up"
                 className={({ isActive }) =>
                   `header__link ${isActive ? "header__link_inactive" : ""}`
                 }
@@ -58,7 +58,7 @@ function Header({ loggedIn, email, signOut }) {
                 Регистрация
               </NavLink>
               <NavLink
-                to="/react-mesto-auth/sign-in"
+                to="/sign-in"
                 className={({ isActive }) =>
                   `header__link ${isActive ? "header__link_inactive" : ""}`
                 }

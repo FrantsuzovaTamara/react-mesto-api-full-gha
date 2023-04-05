@@ -108,7 +108,7 @@ class Api extends React.Component {
 }
 
 const api = new Api({
-  baseUrl: "http://localhost:3000",
+  baseUrl: "https://api.mesto.by.frantsuzova.nomoredomains.work",
   headers: {
     'Content-Type': 'application/json',
   }

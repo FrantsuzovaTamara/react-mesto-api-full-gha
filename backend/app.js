@@ -12,8 +12,19 @@ require('dotenv').config();
 const { PORT = 3000 } = process.env;
 const app = express();
 
+const corsOptions = {
+  origin: [
+    'https://mesto.by.frantsuzova.t.p.nomoredomains.work',
+    'http://localhost:3000',
+  ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+};
+
 app.use(helmet());
-app.use(cors({ origin: 'https://mesto.by.frantsuzova.t.p.nomoredomains.work' }));
+app.use('*', cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

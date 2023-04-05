@@ -9,7 +9,7 @@ export function Register({handleRegister}) {
 
   return (
     <FormForAuth name="register" title="Регистрация" submit="Зарегистрироваться" onSubmit={handleSubmit}>
-      <Link to="/react-mesto-auth/sign-in" className="auth__link">
+      <Link to="/sign-in" className="auth__link">
           Уже зарегистрированы? Войти
       </Link>
     </FormForAuth>
