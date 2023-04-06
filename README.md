@@ -8,7 +8,7 @@
 
 ## Ссылки на проект
 
-IP 51.250.97.28
+IP 158.160.30.47
 
 Frontend https://mesto.by.frantsuzova.t.p.nomoredomains.work
 
