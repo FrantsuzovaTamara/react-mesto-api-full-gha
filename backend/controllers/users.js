@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
-const { JWT_SECRET, NODE_ENV } = process.env;
+const { JWT_SECRET } = require('../config');
 
 const NotFoundError = require('../errors/NotFoundError');
 const ValidationError = require('../errors/ValidationError');
@@ -28,13 +28,9 @@ module.exports.createUser = (req, res, next) => {
       password: hash,
     }))
     .then((user) => {
-      res.status(201).send({
-        name: user.name,
-        about: user.about,
-        avatar: user.avatar,
-        email: user.email,
-        _id: user._id,
-      });
+      const userObject = user.toObject();
+      delete userObject.password;
+      res.status(201).send(user);
     })
     .catch((err) => {
       if (err.code === 11000) {
@@ -53,7 +49,7 @@ module.exports.login = (req, res, next) => {
   return User.findUserByCredentials(email, password)
     .then((user) => {
       res.send({
-        token: jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'JWT_SECRET', {
+        token: jwt.sign({ _id: user._id }, JWT_SECRET, {
           expiresIn: '7d',
         }),
       });
@@ -81,13 +77,7 @@ module.exports.getUser = (req, res, next) => {
         _id: user._id,
       });
     })
-    .catch((err) => {
-      if (err.name === 'CastError') {
-        next(new ValidationError('Введён некорректный id пользователя'));
-      } else {
-        next(err);
-      }
-    });
+    .catch(next);
 };
 
 module.exports.getUserById = (req, res, next) => {

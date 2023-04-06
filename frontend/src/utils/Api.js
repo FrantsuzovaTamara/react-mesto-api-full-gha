@@ -15,7 +15,8 @@ class Api extends React.Component {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
       headers: {
-        authorization: `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`
+        'Authorization': `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`,
+        'Access-Control-Allow-Origin': '*',
       }
     })
     .then(this._checkResponse);
@@ -25,7 +26,8 @@ class Api extends React.Component {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'GET',
       headers: {
-        authorization: `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`
+        'Authorization': `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`,
+        'Access-Control-Allow-Origin': '*',
       }
     })
     .then(this._checkResponse);
@@ -35,8 +37,9 @@ class Api extends React.Component {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: {
-        authorization: `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`,
-        'Content-Type': this._contentType
+        'Authorization': `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`,
+        'Content-Type': this._contentType,
+        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify({
         name: name,
@@ -50,8 +53,9 @@ class Api extends React.Component {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
-        authorization: `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`,
-        'Content-Type': this._contentType
+        'Authorization': `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`,
+        'Content-Type': this._contentType,
+        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify({
         avatar: avatar
@@ -64,8 +68,9 @@ class Api extends React.Component {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
       headers: {
-        authorization: `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`,
-        'Content-Type': this._contentType
+        'Authorization': `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`,
+        'Content-Type': this._contentType,
+        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify({
         name: name,
@@ -79,8 +84,9 @@ class Api extends React.Component {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
       headers: {
-        authorization: `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`,
+        'Authorization': `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`,
         'Content-Type': this._contentType,
+        'Access-Control-Allow-Origin': '*',
       }
     })
     .then(this._checkResponse);
@@ -91,7 +97,8 @@ class Api extends React.Component {
       return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
         method: 'PUT',
         headers: {
-          authorization: `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`
+          'Authorization': `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`,
+          'Access-Control-Allow-Origin': '*',
         }
       })
       .then(this._checkResponse);
@@ -99,7 +106,8 @@ class Api extends React.Component {
       return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
         method: 'DELETE',
         headers: {
-          authorization: `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`
+          'Authorization': `Bearer ${JSON.parse(localStorage.getItem("jwt"))}`,
+          'Access-Control-Allow-Origin': '*',
         }
       })
       .then(this._checkResponse);
@@ -108,9 +116,11 @@ class Api extends React.Component {
 }
 
 const api = new Api({
-  baseUrl: "https://api.mesto.by.frantsuzova.nomoredomains.work",
+  /* baseUrl: "https://api.mesto.by.frantsuzova.nomoredomains.work", */
+  baseUrl: "http://localhost:3000",
   headers: {
     'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
   }
 });
 

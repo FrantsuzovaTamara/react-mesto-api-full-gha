@@ -6,8 +6,9 @@ const ValidationError = require('../errors/ValidationError');
 module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
 
-  Card.create({ name, owner: req.user._id, link })
-    .then((user) => res.send({ user }))
+  Card.create({ name, owner: req.user, link })
+    .then((card) => card.populate('owner'))
+    .then((card) => res.status(201).send({ card }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new ValidationError('Проверьте введённые данные'));
@@ -34,7 +35,7 @@ module.exports.deleteCard = (req, res, next) => {
           'Вы не можете удалить карточку другого пользователя',
         );
       }
-      card.deleteOne()
+      return card.deleteOne()
         .then(
           res.send({ message: 'Карточка успешно удалена' }),
         );
@@ -51,9 +52,10 @@ module.exports.deleteCard = (req, res, next) => {
 module.exports.likeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params._id,
-    { $addToSet: { likes: req.user._id } },
+    { $addToSet: { likes: req.user } },
     { new: true },
   )
+    .populate(['owner', 'likes'])
     .then((card) => {
       if (!card) {
         throw new NotFoundError('Карточка не найдена');
@@ -72,7 +74,7 @@ module.exports.likeCard = (req, res, next) => {
 module.exports.dislikeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params._id,
-    { $pull: { likes: req.user._id } },
+    { $pull: { likes: req.user } },
     { new: true },
   )
     .then((card) => {

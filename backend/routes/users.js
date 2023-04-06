@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Joi, celebrate } = require('celebrate');
-const regex = require('../constants');
+const REGEXP_URL = require('../constants');
 const {
   getUser,
   getUsers,
@@ -14,8 +14,8 @@ router.patch(
   '/me',
   celebrate({
     body: Joi.object().keys({
-      name: Joi.string().min(2).max(30),
-      about: Joi.string().min(2).max(30),
+      name: Joi.string().min(2).max(30).required(),
+      about: Joi.string().min(2).max(30).required(),
     }),
   }),
   changeProfileInfo,
@@ -24,7 +24,7 @@ router.patch(
   '/me/avatar',
   celebrate({
     body: Joi.object().keys({
-      avatar: Joi.string().regex(regex),
+      avatar: Joi.string().regex(REGEXP_URL).required(),
     }),
   }),
   changeAvatar,
