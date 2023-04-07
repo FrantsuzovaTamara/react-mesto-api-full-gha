@@ -1,4 +1,5 @@
 import React from "react";
+import BASE_URL from "./constant";
 
 class Api extends React.Component {
   constructor(props) {
@@ -116,8 +117,7 @@ class Api extends React.Component {
 }
 
 const api = new Api({
-  /* baseUrl: "https://api.mesto.by.frantsuzova.nomoredomains.work", */
-  baseUrl: "http://localhost:3000",
+  baseUrl: BASE_URL,
   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',

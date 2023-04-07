@@ -49,10 +49,11 @@ module.exports.deleteCard = (req, res, next) => {
     });
 };
 
-module.exports.likeCard = (req, res, next) => {
+const updateLike = (req, res, next, method) => {
+  console.log(req.params._id);
   Card.findByIdAndUpdate(
     req.params._id,
-    { $addToSet: { likes: req.user } },
+    { [method]: { likes: req.user._id } },
     { new: true },
   )
     .populate(['owner', 'likes'])
@@ -71,23 +72,5 @@ module.exports.likeCard = (req, res, next) => {
     });
 };
 
-module.exports.dislikeCard = (req, res, next) => {
-  Card.findByIdAndUpdate(
-    req.params._id,
-    { $pull: { likes: req.user } },
-    { new: true },
-  )
-    .then((card) => {
-      if (!card) {
-        throw new NotFoundError('Карточка не найдена');
-      }
-      res.send({ card });
-    })
-    .catch((err) => {
-      if (err.name === 'CastError') {
-        next(new ValidationError('При обновлении карточки были переданы некорректные данные'));
-      } else {
-        next(err);
-      }
-    });
-};
+module.exports.likeCard = (req, res, next) => updateLike(req, res, next, '$addToSet');
+module.exports.dislikeCard = (req, res, next) => updateLike(req, res, next, '$pull');
