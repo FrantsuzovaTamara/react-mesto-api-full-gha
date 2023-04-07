@@ -36,9 +36,9 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-router.use(requestLogger);
+app.use(requestLogger);
 app.use(router);
-router.use(errorLogger);
+app.use(errorLogger);
 
 app.use(errors());
 app.use(error);
