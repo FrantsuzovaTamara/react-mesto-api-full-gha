@@ -50,6 +50,10 @@ module.exports.deleteCard = (req, res, next) => {
 };
 
 const updateLike = (req, res, next, method) => {
+<<<<<<< HEAD
+=======
+  console.log(req.params._id);
+>>>>>>> 5dab1f1f94f2b1406d96477ee3d9adde76daa492
   Card.findByIdAndUpdate(
     req.params._id,
     { [method]: { likes: req.user._id } },
