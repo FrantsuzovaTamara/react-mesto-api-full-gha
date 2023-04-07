@@ -28,8 +28,6 @@ module.exports.createUser = (req, res, next) => {
       password: hash,
     }))
     .then((user) => {
-      const userObject = user.toObject();
-      delete userObject.password;
       res.status(201).send(user);
     })
     .catch((err) => {
@@ -69,13 +67,7 @@ module.exports.getUser = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Нет пользователя с таким id');
       }
-      return res.send({
-        name: user.name,
-        about: user.about,
-        avatar: user.avatar,
-        email: user.email,
-        _id: user._id,
-      });
+      return res.send({ user });
     })
     .catch(next);
 };
