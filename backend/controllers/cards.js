@@ -35,10 +35,9 @@ module.exports.deleteCard = (req, res, next) => {
           'Вы не можете удалить карточку другого пользователя',
         );
       }
-      return card.deleteOne()
-        .then(
-          res.send({ message: 'Карточка успешно удалена' }),
-        );
+      return card
+        .deleteOne()
+        .then(res.send({ message: 'Карточка успешно удалена' }));
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -50,10 +49,6 @@ module.exports.deleteCard = (req, res, next) => {
 };
 
 const updateLike = (req, res, next, method) => {
-<<<<<<< HEAD
-=======
-  console.log(req.params._id);
->>>>>>> 5dab1f1f94f2b1406d96477ee3d9adde76daa492
   Card.findByIdAndUpdate(
     req.params._id,
     { [method]: { likes: req.user._id } },
@@ -68,12 +63,20 @@ const updateLike = (req, res, next, method) => {
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new ValidationError('При обновлении карточки были переданы некорректные данные'));
+        next(
+          new ValidationError(
+            'При обновлении карточки были переданы некорректные данные',
+          ),
+        );
       } else {
         next(err);
       }
     });
 };
 
-module.exports.likeCard = (req, res, next) => updateLike(req, res, next, '$addToSet');
-module.exports.dislikeCard = (req, res, next) => updateLike(req, res, next, '$pull');
+module.exports.likeCard = (req, res, next) => {
+  updateLike(req, res, next, '$addToSet');
+};
+module.exports.dislikeCard = (req, res, next) => {
+  updateLike(req, res, next, '$pull');
+};
