@@ -6,7 +6,7 @@ const { errors } = require('celebrate');
 const error = require('./middlewares/error');
 const router = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { PORT } = require('./config');
+const { PORT } = require('./utils/config');
 
 const app = express();
 
