@@ -1,4 +1,4 @@
-const STATUS = "development";
+const STATUS = "production";
 let BASE_URL;
 
 if (STATUS === "production")  {
