@@ -1,4 +1,4 @@
-![Шапка сайта](./frontend/src/redme/images/redme/redme__header.png)
+![Шапка сайта](./frontend/src/images/redme/redme__header.png)
 
 # Проект: Место
 
@@ -28,21 +28,21 @@
 Mesto - это интерактивная страница, на которой можно:
 
 * делиться своими фотографиями и видеть фотографии других пользователей
-![Добавить карточку](./frontend/src/redme/images/redme/readme__add-card.png)
+![Добавить карточку](./frontend/src/images/redme/readme__add-card.png)
 
 * удалять свои карточки (у личных карточек есть иконка урны, у карточек других пользователей такой иконки нет), ставить лайки своим карточкам и карточкам других пользователей
-![Удаление и лайк](./frontend/src/redme/images/redme/readme__like-and-delete.gif)
+![Удаление и лайк](./frontend/src/images/redme/readme__like-and-delete.gif)
 
 * редактировать свой профиль
-![Редактирование профиля](./frontend/src/redme/images/redme/readme__change-profile.png)
+![Редактирование профиля](./frontend/src/images/redme/readme__change-profile.png)
 
 * менять аватар профиля
-![Смена аватара](./frontend/src/redme/images/redme/redme__change-avatar.png)
+![Смена аватара](./frontend/src/images/redme/redme__change-avatar.png)
 
 * регистрироваться, авторизовываться (при повторном входе авторизация не нужна) и выходить из профиля
-![Регистрация](./frontend/src/redme/images/redme/readme__sign-up.png)
-![Авторизация](./frontend/src/redme/images/redme/readne__sign-in.png)
-![Выход](./frontend/src/redme/images/redme/readme__sign-out.gif)
+![Регистрация](./frontend/src/images/redme/readme__sign-up.png)
+![Авторизация](./frontend/src/images/redme/readne__sign-in.png)
+![Выход](./frontend/src/images/redme/readme__sign-out.gif)
 
 ## **Что использовалось?**
 
