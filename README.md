@@ -17,9 +17,9 @@
 
 ## **Сайт проекта**
 
-*[Ссылка на сайт](https://frantsuzovatamara.github.io/react-mesto-auth/)
-*[Frontend](https://mesto.by.frantsuzova.t.p.nomoredomains.work)
-*[Backend](https://api.mesto.by.frantsuzova.nomoredomains.work)
+* [Ссылка на сайт](https://frantsuzovatamara.github.io/react-mesto-auth/)
+* [Frontend](https://mesto.by.frantsuzova.t.p.nomoredomains.work)
+* [Backend](https://api.mesto.by.frantsuzova.nomoredomains.work)
 
 ## **Описание проекта**
 
